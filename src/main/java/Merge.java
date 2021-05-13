@@ -25,21 +25,18 @@ public class Merge {
 
     public int[][] merge(int[][] intervals) {
         ArrayList<Period> merged = new ArrayList<>();
-        Arrays.sort(intervals, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if(o1[0] < o2[0]) {
-                    return -1;
-                }
-                else if(o1[0] == o2[0] && o1[1] < o2[1]) {
-                    return  -1;
-                }
-                else if(o1[0] == o2[0] && o1[1] == o2[0] ) {
-                    return 0;
-                }
-                else {
-                    return  1;
-                }
+        Arrays.sort(intervals, (o1, o2) -> {
+            if(o1[0] < o2[0]) {
+                return -1;
+            }
+            else if(o1[0] == o2[0] && o1[1] < o2[1]) {
+                return  -1;
+            }
+            else if(o1[0] == o2[0] && o1[1] == o2[0] ) {
+                return 0;
+            }
+            else {
+                return  1;
             }
         });
         int start = intervals[0][0];
